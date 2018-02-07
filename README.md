@@ -1,2 +1,2 @@
 # iihs_curation_auth
-Superlogin docker Service
+Superlogin docker Service for IIHS Application
