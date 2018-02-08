@@ -12,7 +12,7 @@ var dbhost = process.env.dbhost;
 console.log(dbhost);
 var dbport=process.env.dbPort;
 //var couchdbport=process.env.couchdbport;
-var dbhostwidport=dbprotocol+dbhost+':'+dbport;
+var dbhostwidport=dbhost+':'+dbport;
 
 console.log(dbhostwidport); 
 
