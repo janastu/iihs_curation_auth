@@ -43,8 +43,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 var config = {
   dbServer: {
-    protocol: dbprotocol,
-    host: dbhostwidport,          //Host name for Couchdb Database
+    protocol: dbprotocol,//(http)
+    host: dbhost,//(http://mmcouch.test.openrun.net)( in local 192.168.99.100:5984)
     user: dbuser,                    //User name for Couchdb Database
     password: dbpassword,     //Password for Couchdb Database
     userDB:dbuserDB,
