@@ -102,12 +102,12 @@ var config = {
     couchAuthDB:dbcouchAuthDB
   },
   mailer: {
-    fromEmail: 'demotestuser43@gmail.com',
+    fromEmail: 'fromemailid',
     options: {
       service: 'Gmail',
         		auth: {
-          user: 'demotestuser43@gmail.com',
-          pass: 'demotestuser@43'
+          user: 'username',
+          pass: 'password'
         },
 		tls: {
         rejectUnauthorized: false // allow invalid certificates
