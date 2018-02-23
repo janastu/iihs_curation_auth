@@ -77,16 +77,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 var config = {
-	 emails: {
-    // Customize the templates for the emails that SuperLogin sends out
-    confirmEmail: {
-      subject: 'Please confirm your email',
-      // Remember to use the correct path relative to where your custom config file is located
-      template: path.join(__dirname, './templates/email/confirm-email.ejs'),
-      // 'text' or 'html'
-      format: 'text'
-    }
-	},
+	
 	local:{
 	sendConfirmEmail:'true',
 	requireEmailConfirm:'true',
@@ -102,12 +93,12 @@ var config = {
     couchAuthDB:dbcouchAuthDB
   },
   mailer: {
-    fromEmail: 'demotestuser43@gmail.com',
+    fromEmail: 'fromid',
     options: {
       service: 'Gmail',
         		auth: {
-          user: 'demotestuser43@gmail.com',
-          pass: 'demotestuser@43'
+          user: 'username',
+          pass: 'password'
         },
 		tls: {
         rejectUnauthorized: false // allow invalid certificates
@@ -141,6 +132,7 @@ app.use(function(req, res, next) {
 app.get('/', function (req, res) {
   res.send('hello world')
 })
+
 app.get('/sendemail',function(req,res){
     res.send(req.query.email)
 	console.log(req.query.email);
