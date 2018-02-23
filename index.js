@@ -133,6 +133,14 @@ app.get('/', function (req, res) {
   res.send('hello world')
 })
 
+app.get('/password-reset',function(req,res){
+	var token=req.query.token;
+	console.log(token);
+	//res.send(token);
+	res.redirect(tokenurl+'/?token='+ token);
+								   
+});
+
 app.get('/sendemail',function(req,res){
     res.send(req.query.email)
 	console.log(req.query.email);
