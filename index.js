@@ -6,7 +6,6 @@ var logger = require('morgan');
 var SuperLogin = require('superlogin');
 var cors = require('cors')
 var path = require('path');
-var nodemailer = require('nodemailer');
 /*
 var dbprotocol = 'http://';
 console.log(dbprotocol);
@@ -17,7 +16,7 @@ var dbport='5984';
 var dbhostwidport=dbhost+':'+dbport;
 
 console.log(dbhostwidport); 
-
+var nodemailer = require('nodemailer');
 var dbuser = 'admin';
 var dbpassword= 'admin';
 console.log(dbuser);
@@ -32,8 +31,19 @@ console.log(port);
 
 var clienturl='localhost:4200';
 */
-
 var dbprotocol = process.env.dbprotocol;
+var clienturl=process.env.clienturl;
+var loginpath='/#/login';
+var registrationpath='/#/signup/';
+var tokenpath='/#/resetpassword';
+var loginurl=dbprotocol+ clienturl+loginpath;
+var registrationurl=dbprotocol+clienturl+registrationpath;
+console.log(loginurl);
+console.log(registrationurl);
+var tokenurl=dbprotocol+clienturl+tokenpath;
+
+
+
 console.log(dbprotocol);
 var dbhost = process.env.dbhost;
 console.log(dbhost);
@@ -55,17 +65,9 @@ var dbcouchAuthDB=process.env.dbcouchAuthDB;
 //console.log(couchdbdomain);
 console.log(port);
 
-var clienturl=process.env.clienturl;
 
 var clienturlwithprotocol=dbprotocol + clienturl
 console.log(clienturlwithprotocol);
-var loginpath='/#/login';
-var registrationpath='/#/signup/'
-var loginurl=dbprotocol+ clienturl+loginpath;
-var registrationurl=dbprotocol+clienturl+registrationpath;
-console.log(loginurl);
-console.log(registrationurl);
-
 
 var app = express();
 app.set('port', port|| 3000);
@@ -77,7 +79,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 var config = {
-	
+	 emails: {
+    // Customize the templates for the emails that SuperLogin sends out
+    forgotPassword: {
+      subject: 'Your password reset link',
+      template: path.join(__dirname, './templates/email/forgot-password.ejs'),
+      format: 'text'
+    }
+	},
 	local:{
 	sendConfirmEmail:'true',
 	requireEmailConfirm:'true',
@@ -93,12 +102,12 @@ var config = {
     couchAuthDB:dbcouchAuthDB
   },
   mailer: {
-    fromEmail: 'fromid',
+    fromEmail: 'demotestuser43@gmail.com',
     options: {
       service: 'Gmail',
         		auth: {
-          user: 'username',
-          pass: 'password'
+          user: 'demotestuser43@gmail.com',
+          pass: 'demotestuser@43'
         },
 		tls: {
         rejectUnauthorized: false // allow invalid certificates
@@ -131,7 +140,7 @@ app.use(function(req, res, next) {
 // Mount SuperLogin's routes to our app 
 app.get('/', function (req, res) {
   res.send('hello world')
-})
+});
 
 app.get('/password-reset',function(req,res){
 	var token=req.query.token;
@@ -140,7 +149,6 @@ app.get('/password-reset',function(req,res){
 	res.redirect(tokenurl+'/?token='+ token);
 								   
 });
-
 app.get('/sendemail',function(req,res){
     res.send(req.query.email)
 	console.log(req.query.email);
