@@ -155,9 +155,10 @@ app.get('/sendemail',function(req,res){
 	
 	var email=req.query.email;
 	console.log(email);
-	
-	var path=registrationurl+'?email='+email;
-	console.log(path);
+	var groupname=req.query.groupname;
+	console.log(groupname);
+	var path=loginurl+'?email='+email+'&groupname='+groupname;
+		console.log(path);
 	//superlogin.sendmail(config.emails.confirmEmail,email,path);
     
 	var transporter = nodemailer.createTransport(config.mailer.options);
