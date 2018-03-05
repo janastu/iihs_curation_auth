@@ -102,12 +102,12 @@ var config = {
     couchAuthDB:dbcouchAuthDB
   },
   mailer: {
-    fromEmail: 'demotestuser43@gmail.com',
+    fromEmail: 'fromemail',
     options: {
       service: 'Gmail',
         		auth: {
-          user: 'demotestuser43@gmail.com',
-          pass: 'demotestuser@43'
+          user: 'username',
+          pass: 'password'
         },
 		tls: {
         rejectUnauthorized: false // allow invalid certificates
@@ -167,7 +167,8 @@ var mailOptions = {
   from: 'demotestuser43@gmail.com',
   to: email,
   subject: 'Admin Has Added to the Group',
-  text: 'You have been added to group click link'+'<a href='+path
+  text: 'You have been added to group click link'+'<a href='+path,
+  html:   '<p><b>Hello</b> You have been added to group <b>'+ groupname+'</b> click link for User Registration <a href ='+path+'>Link</a></p>
 };
 
 transporter.sendMail(mailOptions, function(error, info){
