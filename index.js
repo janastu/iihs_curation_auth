@@ -6,6 +6,7 @@ var logger = require('morgan');
 var SuperLogin = require('superlogin');
 var cors = require('cors')
 var path = require('path');
+var nodemailer = require('nodemailer');
 /*
 var dbprotocol = 'http://';
 console.log(dbprotocol);
@@ -16,7 +17,7 @@ var dbport='5984';
 var dbhostwidport=dbhost+':'+dbport;
 
 console.log(dbhostwidport); 
-var nodemailer = require('nodemailer');
+
 var dbuser = 'admin';
 var dbpassword= 'admin';
 console.log(dbuser);
@@ -102,13 +103,12 @@ var config = {
     couchAuthDB:dbcouchAuthDB
   },
   mailer: {
-    fromEmail: 'fromemail',
+     fromEmail: 'fromemail',
     options: {
       service: 'Gmail',
         		auth: {
           user: 'username',
-          pass: 'password'
-        },
+          pass: 'password'},
 		tls: {
         rejectUnauthorized: false // allow invalid certificates
     }
@@ -168,7 +168,7 @@ var mailOptions = {
   to: email,
   subject: 'Admin Has Added to the Group',
   text: 'You have been added to group click link'+'<a href='+path,
-  html:   '<p><b>Hello</b> You have been added to group <b>'+ groupname+'</b> click link for User Registration <a href ='+path+'>Link</a></p>
+  html:   '<p><b>Hello</b> You have been added to group <b>'+ groupname+'</b> click link for User Registration <a href ='+path+'>Link</a></p>'
 };
 
 transporter.sendMail(mailOptions, function(error, info){
