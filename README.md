@@ -35,7 +35,7 @@ DB Server configuration allows Curation Auth to be configured with the given cou
     password: dbpassword,            //Password for Couchdb Database
     userDB:dbuserDB,                 //Database Name
     couchAuthDB:dbcouchAuthDB        //
-  },
+    },
 
 2.UserDB
 
