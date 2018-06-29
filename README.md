@@ -134,17 +134,17 @@ The below snippet is of Send Email using transporter.sendMail function to send e
 
 Service Software Requirements are
 
-	Node V7.0.4
+	Node V7.4.0
 	NPM 5.6.0
 	
 
-Download and Install the Node v7.0.4 from the like [Node JS Site](https://nodejs.org/en/blog/release/v7.4.0/)
+Download and Install the Node v7.4.0 from the link [Node JS Site](https://nodejs.org/en/blog/release/v7.4.0/)
 
 After Installing the Node, verify the node version by the command in terminal 
 
 	node -v
 	
-After Verifying the Node Version, verify the NPM version by the command in terminal 
+After Verifying the Node Version as v7.4.0, verify the NPM version by the command in terminal 
 
 	npm -v
 	
