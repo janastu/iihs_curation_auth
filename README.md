@@ -165,7 +165,7 @@ Now the NPM version should be 5.6.0
 
 2. Navigate to the folder iihs_curation_auth and open cmd prompt
 
-3.In the cmd prompt, Run the command
+3. In the cmd prompt, Run the command
 
 	npm install
 	
@@ -207,7 +207,7 @@ Now the NPM version should be 5.6.0
 
 - Testing Registration
 
-Now get a request tool like [Postman](https://www.getpostman.com/apps) and let's create our first user.
+Now use the tool like [Postman](https://www.getpostman.com/apps) and let's create our first user.
 
 	Method : POST
 
