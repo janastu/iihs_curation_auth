@@ -54,7 +54,7 @@ and if you do not want to have a separate database per registered user then remo
 
 3.Mailer
 
-Mailer configuration allows to configure from which Email ID,Services like gmail,yahoo and the email id username and password as shown below
+Mailer configuration allows to configure from which Email ID the confirmation email has  to be sent after user has registered, In mailer options we have Email Services like gmail,yahoo etc. user filed indicates from which the email has to be sent and password is the password of that email Id.
 
 
 
