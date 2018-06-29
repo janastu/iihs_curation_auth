@@ -48,6 +48,10 @@ UserDB configuration is used to store the create a separate database for individ
       }
       }
 
+If the private filed is set to 'supertest' then if the user registered by  username called 'arvind', then a separate database is created by name 'supertest$arvind'
+and if you do not want to have a separate database per registered user then remove the userDBs options from the configuration
+
+
 3.Mailer
 
 Mailer configuration allows to configure from which Email ID,Services like gmail,yahoo and the email id username and password as shown below
