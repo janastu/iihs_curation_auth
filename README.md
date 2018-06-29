@@ -7,7 +7,7 @@ Superlogin: [@colinskow](https://github.com/colinskow)
 
 DOCKER Superlogin Services for IIHS Application
 
-This Service is used for following things
+This Service is used for following functions:
 
 1.Registration 
 
@@ -21,20 +21,20 @@ This Service is used for following things
 
 
 
-Superlogin has the following Configutations options to be done 
+Superlogin has the following Configutations options to be done : in the index.js file
 
 1.DBServer
 
-DB Server configuration allows Curation Auth to be configured with the given couch db Database as shown below
+DB Server configuration allows Curation Auth to be configured with the given couch db Database as shown below:
 
 
     dbServer: {
     protocol: dbprotocol,            //(http)
-    host: dbhost,                   //(http://mmcouch.test.openrun.net)( in local 192.168.99.100:5984)
+    host: dbhost,                    //(http://mmcouch.test.openrun.net)( in local 192.168.99.100:5984)
     user: dbuser,                    //User name for Couchdb Database
     password: dbpassword,            //Password for Couchdb Database
     userDB:dbuserDB,                 //Database Name
-    couchAuthDB:dbcouchAuthDB         //
+    couchAuthDB:dbcouchAuthDB        //
   },
 
 2.UserDB
@@ -45,16 +45,16 @@ UserDB configuration is used to store the create a separate database for individ
     userDBs: {
       defaultDBs: {
         private: ['supertest']
-      }
+                }
       }
 
-If the private filed is set to 'supertest' then if the user registered by  username called 'arvind', then a separate database is created by name 'supertest$arvind'
-and if you do not want to have a separate database per registered user then remove the userDBs options from the configuration
+If the private field is set to 'supertest' then, if the user registered by username as 'arvind', then a separate database is created by name 'supertest$arvind'.
+if you do not want to have a separate database per registered user then remove the userDBs options from the configuration
 
 
 3.Mailer
 
-Mailer configuration allows to configure from which Email ID the confirmation email has  to be sent after user has registered, In mailer options we have Email Services like gmail,yahoo etc. user filed indicates from which the email has to be sent and password is the password of that email Id.
+Mailer configuration allows to configure from which Email ID the confirmation email has  to be sent after user has registered, In mailer options we have Email Services like gmail,yahoo etc. user field indicates from which the email has to be sent and pass is the password of that email Id.
 
 
 
@@ -73,7 +73,7 @@ Mailer configuration allows to configure from which Email ID the confirmation em
 
 4.Local
 
-Local configuration allow to configure whether to send confirmation mail after user registration,can he able to login wihtout confirming email and after confirming the email to which path the user needs to be redirected(Like login page with status as true in query parameter /login?status=true) 
+Local configuration filed 'sendConfirmEmail=true/false' allows to configure whether to send or not the confirmation mail after user registration. User can login into system based on condition whether he should verify his email or not verify his email id if 'requireEmailConfirm=true/false'. The field 'confirmEmailRedirectURL=path' ,User After Email confirmation ,he is directed to  path (Like login page with status as true in query parameter /login?status=true) 
 
 The fileds for local confugurations are
 
@@ -93,9 +93,9 @@ From line Number 82 to 122 of index.js file is of Configuration for Superlogin M
 
  - Password Reset
 
-The Rest API will be used to redirect the user to the reset page where user needs to enter the new password.
+The Rest API (/password-reset) will be used to redirect the user to the reset page, where user needs to enter the new password to reset.
 
-Superlogin send the link in the mail for reseting the password and after clicking on the email link ,the client is redirected back to the client reset page where he enters the new passord
+Superlogin sends the link in the mail to reset the password and after clicking on the link, the client is redirected back to the client reset page where user enters the new password to reset.
 
     var token=req.query.token;
 	  res.redirect(tokenurl+'/?token='+ token);     //token url=/#/resetpassword
@@ -105,11 +105,11 @@ res.redirect is used to redirect to the given url
 
  - Send Email
  
-As the admin has the option of adding the users to the particualr group from Dashbaord Service, the added user needs to be notified through the mail saying the user is added to the group and click the link to register
+The REST API (/sendemail), As the admin has the option of adding the users to the particular group from Dashboard Service, the newly added user needs to be notified through the mail saying the user is added to the group and click the link to register
 
-After the users click the link, the user will be redirected to the User Registration page with non editable email id filed .
+After the users click the link, the user will be redirected to the User Registration page with non editable email id filed and user can enter the other details and register to the system so that the user can able to login to the application of that particular group added.
 
-The below snippet is of Send Email using trasnporter.sendMail function to send emails
+The below snippet is of Send Email using transporter.sendMail function to send emails
 
     var transporter = nodemailer.createTransport(config.mailer.options);
 
@@ -144,15 +144,15 @@ After Installing the Node, verify the node version by the command in terminal
 
 	node -v
 	
-After Verifying the Node Version verify the NPM version by the command in terminal 
+After Verifying the Node Version, verify the NPM version by the command in terminal 
 
 	npm -v
 	
-If the NPM version other than 5.6.0 then run the below command to install the NPM 5.6.0 version
+If the NPM version other than 5.6.0, then run the below command to install the NPM 5.6.0 version
 
 	npm install npm@5.6.0
 	
-After Successfully installation verify the NPM version by the command in terminal
+After Successfully installation, verify the NPM version by the command in terminal
 
 	npm -v
 	
@@ -161,11 +161,11 @@ Now the NPM version should be 5.6.0
 
 ## How to Run 
 
-1. Clone the Repositer from the [Git Hub Repositery](https://github.com/janastu/iihs_curation_auth.git)
+1. Clone the Repository from the [Git Hub Repositery](https://github.com/janastu/iihs_curation_auth.git)
 
-2. Navigate to the folder iihs_curation_auth
+2. Navigate to the folder iihs_curation_auth and open cmd prompt
 
-3.Run the command
+3.In the cmd prompt, Run the command
 
 	npm install
 	
@@ -205,7 +205,7 @@ Now the NPM version should be 5.6.0
 		
 6.Test the Service
 
-- Testing Registeration
+- Testing Registration
 
 Now get a request tool like [Postman](https://www.getpostman.com/apps) and let's create our first user.
 
@@ -231,8 +231,11 @@ Now get a request tool like [Postman](https://www.getpostman.com/apps) and let's
 - Testing Login
 
 		Method :POST
+		
 		URL: http://localhost:3000/auth/login
+		
 		Using encode: x-www-form-urlencoded 
+		
 		BODY:
 		{
 		"username": "joesmith",
